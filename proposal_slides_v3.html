@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ファーストビュー案作成</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
@@ -73,6 +75,7 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
   body{background:#fff;padding:0}
   .deck{padding:0}
   .slide{margin:0;box-shadow:none;width:100%;aspect-ratio:auto;height:100vh;page-break-after:always}
+  .slide:last-child{page-break-after:auto}
   [contenteditable]{background:transparent!important;box-shadow:none!important}
   ._add,._del{display:none!important}
   @page{size:landscape;margin:0}
@@ -85,7 +88,7 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
   <div>📄 文字はクリックで編集可 ／ 項目の ＋/× で追加・削除 ／ 自動保存：<span class="_status" id="status">—</span></div>
   <div>印刷は <b>Ctrl+P</b> → 横向き ／ 余白なし ／ 背景ON</div>
   <div class="_actions">
-    <button onclick="savePdf()" style="background:#1a5c38;color:#fff;border-color:#1a5c38;font-weight:700">📄 PDFで保存</button>
+    <button onclick="savePdf(event)" style="background:#1a5c38;color:#fff;border-color:#1a5c38;font-weight:700">📄 PDFで保存</button>
     <button onclick="exportText()">テキスト書き出し</button>
     <button onclick="resetText()">リセット</button>
   </div>
@@ -279,12 +282,39 @@ function resetText() {
   }
 }
 
-function savePdf() {
-  // Chromeの「PDFに保存」はdocument.titleをファイル名に使う
-  const orig = document.title;
-  document.title = '260425_ファーストビュー案_Unsee';
-  window.print();
-  setTimeout(() => { document.title = orig; }, 2000);
+async function savePdf(ev) {
+  const btn = ev ? ev.currentTarget : document.querySelector('.topbar button');
+  const origText = btn.textContent;
+  btn.disabled = true;
+
+  try {
+    const { jsPDF } = window.jspdf;
+    const slides = document.querySelectorAll('.slide');
+    const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [1600, 900], compress: true });
+
+    for (let i = 0; i < slides.length; i++) {
+      btn.textContent = '生成中 ' + (i+1) + '/' + slides.length;
+      const canvas = await html2canvas(slides[i], {
+        scale: 1.5,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        windowWidth: 1600,
+        windowHeight: 900,
+      });
+      const img = canvas.toDataURL('image/jpeg', 0.85);
+      if (i > 0) pdf.addPage([1600, 900], 'landscape');
+      pdf.addImage(img, 'JPEG', 0, 0, 1600, 900);
+    }
+
+    pdf.save('260425_ファーストビュー案_Unsee.pdf');
+    btn.textContent = '✓ 保存完了';
+    setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 2000);
+  } catch (e) {
+    alert('PDF生成エラー: ' + e.message);
+    btn.textContent = origText;
+    btn.disabled = false;
+  }
 }
 
 function exportText() {
