@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ファーストビュー案作成</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
@@ -23,18 +23,34 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
 
 /* Cover */
 .slide._cover{align-items:center;justify-content:center;background:#fff;position:relative}
-.slide._cover h1{font-size:72px;font-weight:700;color:#111;text-align:center;letter-spacing:.04em;line-height:1.3}
-.slide._cover ._sub{position:absolute;bottom:56px;left:0;right:0;text-align:center;font-size:15px;color:#111;letter-spacing:.3em;font-weight:400}
+.slide._cover h1{font-size:52px;font-weight:700;color:#111;text-align:center;letter-spacing:.04em;line-height:1.3}
+.slide._cover ._sub{position:absolute;bottom:48px;left:0;right:0;text-align:center;font-size:13px;color:#111;letter-spacing:.3em;font-weight:400}
 
 /* Content */
 .slide._content{grid-template-columns:1fr 1fr;align-items:center}
 .slide._content ._img{padding:40px 30px 40px 60px;display:flex;align-items:center;justify-content:center}
 .slide._content ._img img{max-width:100%;max-height:90%;width:auto;height:auto;object-fit:contain;display:block}
-.slide._content ._txt{padding:60px 80px 60px 40px;display:flex;flex-direction:column;justify-content:center;gap:32px}
-.slide._content ._txt h2{font-size:30px;font-weight:700;line-height:1.5;color:#111;letter-spacing:.02em}
-.slide._content ._txt ._pts{display:flex;flex-direction:column;gap:22px}
-.slide._content ._txt ._pt{display:flex;gap:18px;align-items:flex-start;font-size:30px;line-height:1.6;color:#111;font-weight:400}
-.slide._content ._txt ._pt ._n{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;margin-top:6px;font-family:'Noto Sans JP',sans-serif}
+.slide._content ._txt{padding:50px 70px 50px 30px;display:flex;flex-direction:column;justify-content:center;gap:22px}
+.slide._content ._txt h2{font-size:22px;font-weight:700;line-height:1.5;color:#111;letter-spacing:.02em}
+
+._pts{display:flex;flex-direction:column;gap:12px}
+._pt{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.65;color:#111;font-weight:400;position:relative}
+._pt ._n{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:5px;font-family:'Noto Sans JP',sans-serif}
+._pt ._body{flex:1}
+._pt ._del{
+  flex-shrink:0;opacity:0;background:#eee;border:1px solid #ccc;border-radius:50%;
+  width:20px;height:20px;cursor:pointer;font-size:12px;color:#666;margin-top:5px;
+  padding:0;line-height:1;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans JP',sans-serif;
+}
+._pt:hover ._del{opacity:1}
+._pt ._del:hover{background:#fcc;color:#c00;border-color:#c00}
+
+._add{
+  font:inherit;padding:5px 14px;background:transparent;border:1px dashed #aaa;
+  color:#888;cursor:pointer;border-radius:4px;align-self:flex-start;
+  font-size:12px;margin-top:2px;
+}
+._add:hover{background:#f5f5f5;color:#333;border-color:#666}
 
 /* Editable */
 [contenteditable]{outline:none;min-width:20px;cursor:text}
@@ -56,6 +72,7 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
   .deck{padding:0}
   .slide{margin:0;box-shadow:none;width:100%;aspect-ratio:auto;height:100vh;page-break-after:always}
   [contenteditable]{background:transparent!important;box-shadow:none!important}
+  ._add,._del{display:none!important}
   @page{size:landscape;margin:0}
 }
 </style>
@@ -63,10 +80,10 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
 <body>
 
 <div class="topbar">
-  <div>📄 文字はクリックで編集可 ／ 自動保存： <span class="_status" id="status">—</span></div>
-  <div>印刷は <b>Ctrl+P</b> → 横向き ／ 余白なし ／ 背景グラフィックON</div>
+  <div>📄 文字はクリックで編集可 ／ 項目の ＋/× で追加・削除 ／ 自動保存：<span class="_status" id="status">—</span></div>
+  <div>印刷は <b>Ctrl+P</b> → 横向き ／ 余白なし ／ 背景ON</div>
   <div class="_actions">
-    <button onclick="exportText()">テキスト書き出し</button>
+    <button onclick="exportText()">書き出し</button>
     <button onclick="resetText()">リセット</button>
   </div>
 </div>
@@ -75,19 +92,20 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
 
 <!-- P1 -->
 <section class="slide _cover">
-  <h1 contenteditable="true" data-id="p1_title">ファーストビュー案<br>作成</h1>
-  <div class="_sub" contenteditable="true" data-id="p1_sub">AISIN TAKAOKA TOHOKU ／ RECRUIT 2027</div>
+  <h1 contenteditable="true" data-text-id="p1_title">ファーストビュー案<br>作成</h1>
+  <div class="_sub" contenteditable="true" data-text-id="p1_sub">AISIN TAKAOKA TOHOKU ／ RECRUIT 2027</div>
 </section>
 
 <!-- P2 -->
 <section class="slide _content">
   <div class="_img"><img src="firstview_mocks/01A.png" alt=""></div>
   <div class="_txt">
-    <h2 contenteditable="true" data-id="p2_title">縦に流れるパズル構造の写真</h2>
-    <div class="_pts">
-      <div class="_pt"><div class="_n">1</div><div contenteditable="true" data-id="p2_pt1">12枚のビジュアルを3カラムで縦スクロール。動きで会社の広さを伝える</div></div>
-      <div class="_pt"><div class="_n">2</div><div contenteditable="true" data-id="p2_pt2">顔出しなしの後ろ姿・手元・製品で構成、主力のブレーキローターも配置</div></div>
-      <div class="_pt"><div class="_n">3</div><div contenteditable="true" data-id="p2_pt3">情報量が多く、スクロール前に世界観ごと一気に伝わる</div></div>
+    <h2 contenteditable="true" data-text-id="p2_title">縦に流れるパズル構造の写真</h2>
+    <div class="_pts" data-list-id="p2">
+      <div class="_pt"><div class="_n">1</div><div class="_body" contenteditable="true">12枚のビジュアルを3カラムで縦スクロール。動きで会社の広さを伝える</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">2</div><div class="_body" contenteditable="true">顔出しなしの後ろ姿・手元・製品で構成、主力のブレーキローターも配置</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">3</div><div class="_body" contenteditable="true">情報量が多く、スクロール前に世界観ごと一気に伝わる</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <button class="_add" onclick="addItem(this)">＋ 項目を追加</button>
     </div>
   </div>
 </section>
@@ -96,11 +114,12 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
 <section class="slide _content">
   <div class="_img"><img src="firstview_mocks/01B.png" alt=""></div>
   <div class="_txt">
-    <h2 contenteditable="true" data-id="p3_title">タイルを重ねたコラージュの写真</h2>
-    <div class="_pts">
-      <div class="_pt"><div class="_n">1</div><div contenteditable="true" data-id="p3_pt1">大小のタイルを非対称に配置し、雑誌のような編集感が出る</div></div>
-      <div class="_pt"><div class="_n">2</div><div contenteditable="true" data-id="p3_pt2">動きを抑えながら多画像、「読ませるFV」として成立</div></div>
-      <div class="_pt"><div class="_n">3</div><div contenteditable="true" data-id="p3_pt3">中央のキャッチコピーが浮き上がる構図で目線が止まる</div></div>
+    <h2 contenteditable="true" data-text-id="p3_title">タイルを重ねたコラージュの写真</h2>
+    <div class="_pts" data-list-id="p3">
+      <div class="_pt"><div class="_n">1</div><div class="_body" contenteditable="true">大小のタイルを非対称に配置し、雑誌のような編集感が出る</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">2</div><div class="_body" contenteditable="true">動きを抑えながら多画像、「読ませるFV」として成立</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">3</div><div class="_body" contenteditable="true">中央のキャッチコピーが浮き上がる構図で目線が止まる</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <button class="_add" onclick="addItem(this)">＋ 項目を追加</button>
     </div>
   </div>
 </section>
@@ -109,11 +128,12 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
 <section class="slide _content">
   <div class="_img"><img src="firstview_mocks/02A.png" alt=""></div>
   <div class="_txt">
-    <h2 contenteditable="true" data-id="p4_title">俯瞰で仲間の輪を写したシックな写真</h2>
-    <div class="_pts">
-      <div class="_pt"><div class="_n">1</div><div contenteditable="true" data-id="p4_pt1">朝礼の円を真上から。顔なしで「仲間の輪」が構図で語れる</div></div>
-      <div class="_pt"><div class="_n">2</div><div contenteditable="true" data-id="p4_pt2">深い陰影＋黄色アクセントで硬派なドラマ感が出る</div></div>
-      <div class="_pt"><div class="_n">3</div><div contenteditable="true" data-id="p4_pt3">「困ったら、となりに仲間がいる。」の情緒が1枚で伝わる</div></div>
+    <h2 contenteditable="true" data-text-id="p4_title">俯瞰で仲間の輪を写したシックな写真</h2>
+    <div class="_pts" data-list-id="p4">
+      <div class="_pt"><div class="_n">1</div><div class="_body" contenteditable="true">朝礼の円を真上から。顔なしで「仲間の輪」が構図で語れる</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">2</div><div class="_body" contenteditable="true">深い陰影＋黄色アクセントで硬派なドラマ感が出る</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">3</div><div class="_body" contenteditable="true">「困ったら、となりに仲間がいる。」の情緒が1枚で伝わる</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <button class="_add" onclick="addItem(this)">＋ 項目を追加</button>
     </div>
   </div>
 </section>
@@ -122,11 +142,12 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
 <section class="slide _content">
   <div class="_img"><img src="firstview_mocks/02B.png" alt=""></div>
   <div class="_txt">
-    <h2 contenteditable="true" data-id="p5_title">俯瞰で仲間の輪を写した明るい写真</h2>
-    <div class="_pts">
-      <div class="_pt"><div class="_n">1</div><div contenteditable="true" data-id="p5_pt1">同じ俯瞰でも、軽めのトーンでクリアで前向きな空気に</div></div>
-      <div class="_pt"><div class="_n">2</div><div contenteditable="true" data-id="p5_pt2">上部ナビ＋CTA2つが整理され、読みやすさ重視のレイアウト</div></div>
-      <div class="_pt"><div class="_n">3</div><div contenteditable="true" data-id="p5_pt3">ビジネス寄りの落ち着いた印象で、女性層にも馴染む</div></div>
+    <h2 contenteditable="true" data-text-id="p5_title">俯瞰で仲間の輪を写した明るい写真</h2>
+    <div class="_pts" data-list-id="p5">
+      <div class="_pt"><div class="_n">1</div><div class="_body" contenteditable="true">同じ俯瞰でも、軽めのトーンでクリアで前向きな空気に</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">2</div><div class="_body" contenteditable="true">上部ナビ＋CTA2つが整理され、読みやすさ重視のレイアウト</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">3</div><div class="_body" contenteditable="true">ビジネス寄りの落ち着いた印象で、女性層にも馴染む</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <button class="_add" onclick="addItem(this)">＋ 項目を追加</button>
     </div>
   </div>
 </section>
@@ -135,11 +156,12 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
 <section class="slide _content">
   <div class="_img"><img src="firstview_mocks/03A.png" alt=""></div>
   <div class="_txt">
-    <h2 contenteditable="true" data-id="p6_title">3人の後ろ姿を重厚に写した写真</h2>
-    <div class="_pts">
-      <div class="_pt"><div class="_n">1</div><div contenteditable="true" data-id="p6_pt1">暗い工場で背中と影が主役、責任感と重みが伝わる</div></div>
-      <div class="_pt"><div class="_n">2</div><div contenteditable="true" data-id="p6_pt2">「仲間」だけ黄色に抜いて、かっこよさをピンポイントで強調</div></div>
-      <div class="_pt"><div class="_n">3</div><div contenteditable="true" data-id="p6_pt3">男子学生・硬派志向の新卒層へ刺さる重厚感</div></div>
+    <h2 contenteditable="true" data-text-id="p6_title">3人の後ろ姿を重厚に写した写真</h2>
+    <div class="_pts" data-list-id="p6">
+      <div class="_pt"><div class="_n">1</div><div class="_body" contenteditable="true">暗い工場で背中と影が主役、責任感と重みが伝わる</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">2</div><div class="_body" contenteditable="true">「仲間」だけ黄色に抜いて、かっこよさをピンポイントで強調</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">3</div><div class="_body" contenteditable="true">男子学生・硬派志向の新卒層へ刺さる重厚感</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <button class="_add" onclick="addItem(this)">＋ 項目を追加</button>
     </div>
   </div>
 </section>
@@ -148,11 +170,12 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
 <section class="slide _content">
   <div class="_img"><img src="firstview_mocks/03B.png" alt=""></div>
   <div class="_txt">
-    <h2 contenteditable="true" data-id="p7_title">3人の後ろ姿が光へ向かう明るい写真</h2>
-    <div class="_pts">
-      <div class="_pt"><div class="_n">1</div><div contenteditable="true" data-id="p7_pt1">通路奥のバックライトが「前へ進む」象徴になる</div></div>
-      <div class="_pt"><div class="_n">2</div><div contenteditable="true" data-id="p7_pt2">3人並びで「ひとりじゃない」が視覚化される</div></div>
-      <div class="_pt"><div class="_n">3</div><div contenteditable="true" data-id="p7_pt3">希望的なトーンで幅広い層に馴染む温度感</div></div>
+    <h2 contenteditable="true" data-text-id="p7_title">3人の後ろ姿が光へ向かう明るい写真</h2>
+    <div class="_pts" data-list-id="p7">
+      <div class="_pt"><div class="_n">1</div><div class="_body" contenteditable="true">通路奥のバックライトが「前へ進む」象徴になる</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">2</div><div class="_body" contenteditable="true">3人並びで「ひとりじゃない」が視覚化される</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <div class="_pt"><div class="_n">3</div><div class="_body" contenteditable="true">希望的なトーンで幅広い層に馴染む温度感</div><button class="_del" onclick="delItem(this)" title="削除">×</button></div>
+      <button class="_add" onclick="addItem(this)">＋ 項目を追加</button>
     </div>
   </div>
 </section>
@@ -160,16 +183,49 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
 </div>
 
 <script>
-const KEY = 'fv_proposal_v3_text';
+const KEY = 'fv_proposal_v3_text_v2';
 const status = document.getElementById('status');
 let saveTimer;
 
+function renumber(listEl) {
+  listEl.querySelectorAll('._pt ._n').forEach((n, i) => n.textContent = i + 1);
+}
+
+function createPt(text) {
+  const div = document.createElement('div');
+  div.className = '_pt';
+  div.innerHTML = '<div class="_n"></div><div class="_body" contenteditable="true"></div><button class="_del" onclick="delItem(this)" title="削除">×</button>';
+  div.querySelector('._body').textContent = text || '';
+  return div;
+}
+
+function addItem(btn) {
+  const listEl = btn.closest('[data-list-id]');
+  const pt = createPt('');
+  listEl.insertBefore(pt, btn);
+  renumber(listEl);
+  pt.querySelector('._body').focus();
+  save();
+}
+
+function delItem(btn) {
+  const pt = btn.closest('._pt');
+  const listEl = pt.closest('[data-list-id]');
+  pt.remove();
+  renumber(listEl);
+  save();
+}
+
 function collect() {
-  const data = {};
-  document.querySelectorAll('[contenteditable][data-id]').forEach(el => {
-    data[el.dataset.id] = el.innerHTML;
+  const texts = {};
+  document.querySelectorAll('[data-text-id]').forEach(el => {
+    texts[el.dataset.textId] = el.innerHTML;
   });
-  return data;
+  const lists = {};
+  document.querySelectorAll('[data-list-id]').forEach(listEl => {
+    lists[listEl.dataset.listId] = [...listEl.querySelectorAll('._pt ._body')].map(e => e.innerHTML);
+  });
+  return { texts, lists };
 }
 
 function save() {
@@ -182,17 +238,32 @@ function save() {
   }
 }
 
-function load() {
+function restore() {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) { status.textContent = '未編集'; return; }
     const data = JSON.parse(raw);
-    let restored = 0;
-    Object.keys(data).forEach(id => {
-      const el = document.querySelector(`[data-id="${id}"]`);
-      if (el) { el.innerHTML = data[id]; restored++; }
-    });
-    status.textContent = restored > 0 ? `復元済（${restored}項目）` : '未編集';
+    if (data.texts) {
+      Object.keys(data.texts).forEach(id => {
+        const el = document.querySelector('[data-text-id="' + id + '"]');
+        if (el) el.innerHTML = data.texts[id];
+      });
+    }
+    if (data.lists) {
+      Object.keys(data.lists).forEach(listId => {
+        const listEl = document.querySelector('[data-list-id="' + listId + '"]');
+        if (!listEl) return;
+        const addBtn = listEl.querySelector('._add');
+        listEl.querySelectorAll('._pt').forEach(e => e.remove());
+        data.lists[listId].forEach(text => {
+          const pt = createPt('');
+          pt.querySelector('._body').innerHTML = text;
+          listEl.insertBefore(pt, addBtn);
+        });
+        renumber(listEl);
+      });
+    }
+    status.textContent = '復元済 ' + new Date().toLocaleTimeString('ja-JP');
   } catch (e) {
     status.textContent = '読込エラー';
   }
@@ -206,11 +277,16 @@ function resetText() {
 }
 
 function exportText() {
-  const data = collect();
   const lines = [];
-  document.querySelectorAll('[data-id]').forEach(el => {
-    const txt = el.innerText.trim();
-    lines.push(`[${el.dataset.id}]\n${txt}\n`);
+  document.querySelectorAll('.slide').forEach((slide, i) => {
+    lines.push('===== スライド ' + (i+1) + ' =====');
+    slide.querySelectorAll('[data-text-id]').forEach(el => {
+      lines.push('【' + el.tagName + '】 ' + el.innerText.trim());
+    });
+    slide.querySelectorAll('._pt ._body').forEach((b, j) => {
+      lines.push('  ' + (j+1) + '. ' + b.innerText.trim());
+    });
+    lines.push('');
   });
   const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
   const a = document.createElement('a');
@@ -228,7 +304,7 @@ document.addEventListener('input', e => {
   }
 });
 
-load();
+restore();
 </script>
 
 </body>
