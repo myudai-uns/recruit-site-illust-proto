@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pattern F — データビジュアル ／ アイシン高丘東北 採用HP FV案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700&family=Oswald:wght@300;500;700&family=Josefin+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-d:#1a5c38;
+  --green:#2e8b57;
+  --green-l:#6cb130;
+  --yellow:#f0c040;
+  --cream:#f8f1e4;
+  --ink:#2d2418;
+  --gray:#6b6456;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}
+
+.hero{position:relative;min-height:100vh;padding:48px 6vw 60px;display:flex;flex-direction:column}
+
+.hero ._top{display:flex;justify-content:space-between;align-items:center;margin-bottom:60px}
+.hero ._top ._logo{font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:.3em;color:var(--green-d);line-height:1.6;font-weight:500}
+.hero ._top ._logo b{display:block;font-size:18px;font-weight:700;letter-spacing:.05em;color:var(--ink);margin-bottom:3px}
+.hero ._top ._nav{display:flex;gap:28px;font-size:13px;letter-spacing:.1em}
+.hero ._top ._nav a{color:var(--ink);text-decoration:none;transition:color .2s}
+.hero ._top ._nav a:hover{color:var(--green-l)}
+
+.hero ._body{display:grid;grid-template-columns:1fr 1fr;gap:60px;flex:1;align-items:center}
+.hero ._left ._tag{font-family:'Josefin Sans',sans-serif;font-size:13px;letter-spacing:.35em;color:var(--green-l);font-weight:500;margin-bottom:28px}
+.hero ._left ._catch{font-family:'Noto Serif JP',serif;font-size:clamp(3.2rem,5.5vw,7rem);font-weight:700;line-height:1.25;letter-spacing:.02em;margin-bottom:28px;color:var(--green-d)}
+.hero ._left ._catch ._em{color:var(--yellow);font-weight:900}
+.hero ._left ._sub{font-size:clamp(1.4rem,1.3vw,1.6rem);font-weight:500;line-height:2;color:#4a4335;margin-bottom:40px;max-width:540px}
+.hero ._left ._cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero ._left ._cta ._btn{display:inline-flex;align-items:center;gap:10px;padding:18px 32px;border-radius:999px;font-size:14px;font-weight:700;letter-spacing:.08em;text-decoration:none;transition:transform .2s}
+.hero ._left ._cta ._btn._p{background:var(--green-d);color:#fff}
+.hero ._left ._cta ._btn._s{background:transparent;color:var(--green-d);border:1.5px solid var(--green-d)}
+.hero ._left ._cta ._btn:hover{transform:translateY(-2px)}
+
+/* データビジュアル: 右側 */
+.hero ._right{position:relative;display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:repeat(3,auto);gap:12px;align-items:stretch}
+.hero ._right ._photo{grid-row:1/4;border-radius:14px;overflow:hidden;aspect-ratio:3/4.2;box-shadow:0 20px 50px rgba(45,36,24,0.15)}
+.hero ._right ._photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hero ._right ._stat{background:#fff;border-radius:14px;padding:22px 20px;box-shadow:0 6px 20px rgba(45,36,24,0.06);display:flex;flex-direction:column;justify-content:center;transition:transform .3s}
+.hero ._right ._stat:hover{transform:translateY(-4px)}
+.hero ._right ._stat ._label{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:.25em;color:var(--green-l);font-weight:700;margin-bottom:10px;text-transform:uppercase}
+.hero ._right ._stat ._num{font-family:'Oswald',sans-serif;font-size:52px;font-weight:700;color:var(--green-d);line-height:1;margin-bottom:4px;letter-spacing:-.01em}
+.hero ._right ._stat ._num ._unit{font-size:20px;font-weight:500;margin-left:4px}
+.hero ._right ._stat ._desc{font-size:12px;color:var(--gray);line-height:1.6}
+.hero ._right ._stat._yellow{background:var(--yellow);color:var(--ink)}
+.hero ._right ._stat._yellow ._num{color:var(--ink)}
+.hero ._right ._stat._yellow ._label{color:var(--green-d)}
+.hero ._right ._stat._dark{background:var(--green-d);color:#fff}
+.hero ._right ._stat._dark ._num{color:#fff}
+.hero ._right ._stat._dark ._label{color:var(--yellow)}
+.hero ._right ._stat._dark ._desc{color:rgba(255,255,255,.75)}
+
+.hero ._bottom{margin-top:50px;display:flex;justify-content:space-between;align-items:center;font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:.25em;color:var(--gray)}
+
+@media (max-width:900px){
+  .hero{padding:32px 22px 40px}
+  .hero ._top ._nav{display:none}
+  .hero ._body{grid-template-columns:1fr;gap:40px}
+  .hero ._left ._catch{font-size:2.8rem}
+  .hero ._right{grid-template-columns:1fr 1fr;gap:10px}
+  .hero ._right ._photo{grid-column:1/3;grid-row:auto;aspect-ratio:5/4}
+  .hero ._right ._stat ._num{font-size:38px}
+}
+
+footer{background:var(--ink);color:#ccc;padding:28px 24px;text-align:center;font-size:12px;line-height:1.8}
+footer a{color:var(--yellow);margin:0 10px;text-decoration:none}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="_top">
+    <div class="_logo">AISIN TAKAOKA TOHOKU<b>アイシン高丘東北</b>RECRUITING 2027</div>
+    <nav class="_nav">
+      <a href="#about">ABOUT</a>
+      <a href="#work">WORK</a>
+      <a href="#people">PEOPLE</a>
+      <a href="#data">DATA</a>
+      <a href="#entry" style="color:var(--green-l);font-weight:700">ENTRY</a>
+    </nav>
+  </div>
+
+  <div class="_body">
+    <div class="_left">
+      <p class="_tag">NEW GRADUATE RECRUITING 2027</p>
+      <h1 class="_catch">働きやすさは、<br><span class="_em">数字</span>で話す。</h1>
+      <p class="_sub">年間休日121日、有給取得率91%、賞与4.7ヶ月。<br>「しっかり休んで、しっかり稼ぐ」を当たり前にできる環境。<br>アイシングループの一員として、宮城で。</p>
+      <div class="_cta">
+        <a href="#entry" class="_btn _p">新卒エントリー →</a>
+        <a href="#visit" class="_btn _s">会社見学</a>
+      </div>
+    </div>
+
+    <div class="_right">
+      <div class="_photo"><img src="images/11_break_smile.png" alt="働く社員" onerror="this.src='images/04_cafeteria_lunch.png'"></div>
+
+      <div class="_stat _yellow">
+        <div class="_label">Annual Holidays</div>
+        <div class="_num">121<span class="_unit">日</span></div>
+        <div class="_desc">年間休日。完全週休2日（土日）＋長期休暇</div>
+      </div>
+
+      <div class="_stat">
+        <div class="_label">Paid Leave Rate</div>
+        <div class="_num">91<span class="_unit">%</span></div>
+        <div class="_desc">有給取得率（平均17.3日／年）</div>
+      </div>
+
+      <div class="_stat _dark">
+        <div class="_label">Bonus</div>
+        <div class="_num">4.7<span class="_unit">ヶ月</span></div>
+        <div class="_desc">年間賞与（昇給年1回 7.6%）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="_bottom">
+    <div>SCROLL ↓</div>
+    <div>AISIN GROUP / EST. 2009 / MIYAGI</div>
+  </div>
+</section>
+
+<footer>
+  Pattern F — データビジュアル統合<br>
+  <a href="index.html">A: 3カラムパズル</a> | <a href="pattern_b.html">B: 大判ワンショット</a> | <a href="pattern_g.html">G: スクロールストーリー →</a> | <a href="gallery.html">Gallery</a>
+</footer>
+
+</body>
+</html>

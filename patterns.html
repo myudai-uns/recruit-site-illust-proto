@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FVパターン比較 ／ アイシン高丘東北 採用HP FV案</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;background:#f4efe5;color:#2d2418;line-height:1.7;padding:48px 24px 80px}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-size:30px;font-weight:700;color:#1a5c38;margin-bottom:8px}
+.sub{font-size:14px;color:#7a6f5e;margin-bottom:40px}
+.patterns{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:40px}
+.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(45,36,24,.06);text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(45,36,24,.12)}
+.card ._thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:#e8e0d0}
+.card ._thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;transform:scale(.5);transform-origin:0 0;width:200%;height:200%}
+.card ._thumb ._ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.5));color:#fff;padding:12px 18px;display:flex;flex-direction:column;justify-content:flex-end}
+.card ._thumb ._letter{position:absolute;top:12px;left:18px;font-family:'Josefin Sans',sans-serif;font-size:36px;font-weight:700;color:#fff;mix-blend-mode:difference}
+.card ._body{padding:22px 24px 26px}
+.card ._ttl{font-size:20px;font-weight:700;margin-bottom:8px;color:#1a5c38}
+.card ._desc{font-size:13.5px;color:#4a4335;line-height:1.85;margin-bottom:10px}
+.card ._tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.card ._tag{font-size:11px;background:#e8efe0;color:#3a6d3a;padding:4px 10px;border-radius:20px;letter-spacing:.03em}
+.card ._tag._hi{background:#fdf2c8;color:#8c6d14}
+
+.note{background:#fff;border-radius:10px;padding:20px 24px;font-size:13px;color:#4a4335;line-height:1.85;border-left:3px solid #6cb130}
+.note b{color:#1a5c38}
+
+footer{margin-top:50px;padding-top:24px;border-top:1px solid #d9cfba;font-size:12px;color:#7a6f5e;text-align:center}
+footer a{color:#1a5c38;margin:0 10px}
+
+@media (max-width:700px){
+  .patterns{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>採用HP FVパターン比較</h1>
+<p class="sub">アイシン高丘東北株式会社 ／ 新卒向け採用HP ファーストビュー候補 4案<br>プロデザイナーのFB「FV弱い・3カラムは良い」を受け、複数方向でモック化</p>
+
+<div class="patterns">
+
+<a class="card" href="index.html" target="_blank">
+  <div class="_thumb" style="background:linear-gradient(135deg,#1a5c38,#2e8b57)">
+    <span class="_letter">A</span>
+    <div class="_ov"><b>3カラム縦スクロール・パズル</b></div>
+  </div>
+  <div class="_body">
+    <div class="_ttl">A. 3カラムパズル</div>
+    <div class="_desc">トクヤマデンタル型の3カラム縦スクロール・パズルグリッド。タイルに12枚のイラスト/写真を異なる速度で流す。情報量で惹く王道。</div>
+    <div class="_tags"><span class="_tag _hi">プロデザイナー推奨</span><span class="_tag">情報量多</span><span class="_tag">動的</span></div>
+  </div>
+</a>
+
+<a class="card" href="pattern_b.html" target="_blank">
+  <div class="_thumb" style="background:linear-gradient(135deg,#2d2418,#4a3d28)">
+    <span class="_letter">B</span>
+    <div class="_ov"><b>大判ワンショット・センターテキスト</b></div>
+  </div>
+  <div class="_body">
+    <div class="_ttl">B. 大判ワンショット</div>
+    <div class="_desc">1枚の大きな印象的な絵／写真を全画面に敷き、中央に大キャッチ。情緒と物語を1枚で伝える。トヨタ／SUBARU系。</div>
+    <div class="_tags"><span class="_tag">情緒的</span><span class="_tag">シンプル</span><span class="_tag">ドラマチック</span></div>
+  </div>
+</a>
+
+<a class="card" href="pattern_f.html" target="_blank">
+  <div class="_thumb" style="background:linear-gradient(135deg,#f8f1e4,#e8efe0)">
+    <span class="_letter" style="color:#1a5c38">F</span>
+    <div class="_ov"><b>データビジュアル統合</b></div>
+  </div>
+  <div class="_body">
+    <div class="_ttl">F. データビジュアル</div>
+    <div class="_desc">ヒアリングで出た数字（年間休日121日／有給91%／賞与4.7ヶ月）を前面に。安定志向ペルソナに刺さる、信頼感のFV。</div>
+    <div class="_tags"><span class="_tag _hi">安定志向ペルソナ刺さる</span><span class="_tag">数字訴求</span><span class="_tag">安心感</span></div>
+  </div>
+</a>
+
+<a class="card" href="pattern_g.html" target="_blank">
+  <div class="_thumb" style="background:linear-gradient(180deg,#a8c5a0,#1a5c38)">
+    <span class="_letter">G</span>
+    <div class="_ov"><b>スクロールストーリー</b></div>
+  </div>
+  <div class="_body">
+    <div class="_ttl">G. スクロールストーリー</div>
+    <div class="_desc">「宮城→工場→人→仕事→応募」の5章構成。スクロールで物語が進む。新卒の"知りたい"欲を満たし、深く読ませる。Apple商品ページ系。</div>
+    <div class="_tags"><span class="_tag">没入型</span><span class="_tag">物語</span><span class="_tag">深く読ませる</span></div>
+  </div>
+</a>
+
+</div>
+
+<div class="note">
+<b>比較メモ</b><br>
+A＝情報量で惹く／B＝感情で惹く／F＝数字で安心させる／G＝物語で深く伝える。<br>
+ペルソナ①②（新卒大卒・高卒／地元安定志向）への刺さり方を想定：<br>
+・A: ◎ 情報多く退屈させない ／ B: ◎ 温かい雰囲気が伝わる ／ F: ◎◎ 数字で不安を消す ／ G: ◯ 興味が深まる人向け
+</div>
+
+<footer>
+<a href="gallery.html">イラストギャラリー（12枚）</a> | <a href="https://github.com/myudai-uns/recruit-site-illust-proto">GitHub Repo</a><br>
+<span style="opacity:.6">画像: 2026-04-24 再生成（70%写真／30%絵画タッチ）</span>
+</footer>
+</div>
+</body>
+</html>

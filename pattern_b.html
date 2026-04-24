@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pattern B — 大判ワンショット ／ アイシン高丘東北 採用HP FV案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&family=Josefin+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-d:#1a5c38;
+  --green:#2e8b57;
+  --green-l:#6cb130;
+  --yellow:#f0c040;
+  --cream:#f8f1e4;
+  --ink:#2d2418;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:#000;overflow-x:hidden}
+
+.hero{position:relative;width:100%;height:100vh;min-height:720px;overflow:hidden}
+.hero ._bg{position:absolute;inset:0;z-index:1}
+.hero ._bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);animation:zoomSlow 30s ease-in-out infinite alternate}
+@keyframes zoomSlow{0%{transform:scale(1.02)}100%{transform:scale(1.12)}}
+.hero::after{content:'';position:absolute;inset:0;z-index:2;background:
+  linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.35) 70%, rgba(26,60,42,0.85) 100%);
+  pointer-events:none}
+
+.hero ._content{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:space-between;padding:48px 6vw}
+.hero ._top{display:flex;justify-content:space-between;align-items:flex-start;color:#fff}
+.hero ._top ._logo{font-family:'Josefin Sans',sans-serif;font-size:12px;letter-spacing:.3em;font-weight:500;opacity:.9;line-height:1.6}
+.hero ._top ._logo b{display:block;font-size:20px;font-weight:700;letter-spacing:.05em;margin-bottom:4px}
+.hero ._top ._nav{display:flex;gap:28px;font-size:13px;letter-spacing:.1em}
+.hero ._top ._nav a{color:#fff;text-decoration:none;opacity:.85;transition:opacity .2s}
+.hero ._top ._nav a:hover{opacity:1}
+
+.hero ._main{color:#fff;max-width:900px}
+.hero ._main ._tag{font-family:'Josefin Sans',sans-serif;font-size:13px;letter-spacing:.35em;color:var(--yellow);font-weight:500;margin-bottom:26px;opacity:0;animation:fu 1s .3s forwards}
+.hero ._main ._catch{font-family:'Noto Serif JP',serif;font-size:clamp(3.6rem,8vw,10rem);font-weight:700;line-height:1.28;letter-spacing:.03em;margin-bottom:32px;opacity:0;animation:fu 1.2s .6s forwards;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+.hero ._main ._catch ._em{color:var(--yellow);font-weight:900}
+.hero ._main ._sub{font-size:clamp(1.4rem,1.6vw,1.8rem);font-weight:500;line-height:2;letter-spacing:.08em;max-width:620px;opacity:0;animation:fu 1s 1s forwards;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.hero ._main ._cta{margin-top:44px;display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fu 1s 1.3s forwards}
+.hero ._main ._cta ._btn{display:inline-flex;align-items:center;gap:12px;padding:20px 38px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.08em;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.hero ._main ._cta ._btn._p{background:var(--yellow);color:var(--ink);box-shadow:0 12px 30px rgba(240,192,64,.35)}
+.hero ._main ._cta ._btn._s{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(6px)}
+.hero ._main ._cta ._btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.hero ._main ._cta ._btn ._ar{font-size:18px}
+
+.hero ._bottom{display:flex;justify-content:space-between;align-items:flex-end;color:rgba(255,255,255,.75);font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:.25em}
+.hero ._bottom ._scroll{display:flex;align-items:center;gap:12px;opacity:0;animation:fu 1s 1.6s forwards}
+.hero ._bottom ._scroll::after{content:'';width:40px;height:1px;background:rgba(255,255,255,.6);animation:slide 1.8s ease-in-out infinite}
+.hero ._bottom ._caption{opacity:.6;text-align:right;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.15em;line-height:1.8}
+
+@keyframes fu{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes slide{0%{transform:scaleX(0);transform-origin:left}50%{transform:scaleX(1);transform-origin:left}50.01%{transform:scaleX(1);transform-origin:right}100%{transform:scaleX(0);transform-origin:right}}
+
+footer{background:var(--ink);color:#ccc;padding:30px 24px;text-align:center;font-size:12px;line-height:1.8}
+footer a{color:var(--yellow);margin:0 10px;text-decoration:none}
+
+@media (max-width:900px){
+  .hero{min-height:640px}
+  .hero ._content{padding:32px 24px}
+  .hero ._top ._nav{display:none}
+  .hero ._main ._catch{font-size:3.2rem}
+  .hero ._main ._cta{flex-direction:column}
+  .hero ._main ._cta ._btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="_bg"><img src="images/01_morning_assembly.png" alt=""></div>
+  <div class="_content">
+    <div class="_top">
+      <div class="_logo">AISIN TAKAOKA TOHOKU<b>アイシン高丘東北</b>RECRUITING 2027</div>
+      <nav class="_nav">
+        <a href="#about">ABOUT</a>
+        <a href="#work">WORK</a>
+        <a href="#people">PEOPLE</a>
+        <a href="#data">DATA</a>
+        <a href="#entry" style="color:var(--yellow);font-weight:700">ENTRY</a>
+      </nav>
+    </div>
+
+    <div class="_main">
+      <p class="_tag">GRADUATE RECRUITING 2027</p>
+      <h1 class="_catch">困ったら、<br>となりに<span class="_em">仲間</span>がいる。</h1>
+      <p class="_sub">宮城・大衡村の工場で、<br>トヨタグループの一員として<br>「クルマの心臓部」をつくる仲間を募集しています。</p>
+      <div class="_cta">
+        <a href="#entry" class="_btn _p">新卒エントリー <span class="_ar">→</span></a>
+        <a href="#visit" class="_btn _s">会社見学・説明会 <span class="_ar">→</span></a>
+      </div>
+    </div>
+
+    <div class="_bottom">
+      <div class="_scroll">SCROLL</div>
+      <div class="_caption">〒981-3601 宮城県黒川郡大衡村大瓜字青木83-2<br>アイシングループ ／ 従業員340名 ／ 2009年設立</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Pattern B — 大判ワンショット・センターテキスト<br>
+  <a href="index.html">← A: 3カラムパズル</a> | <a href="pattern_f.html">F: データビジュアル →</a> | <a href="pattern_g.html">G: スクロールストーリー →</a> | <a href="gallery.html">Gallery</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pattern G — スクロールストーリー ／ アイシン高丘東北 採用HP FV案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&family=Josefin+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-d:#1a5c38;
+  --green-l:#6cb130;
+  --yellow:#f0c040;
+  --cream:#f8f1e4;
+  --ink:#2d2418;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:#000;overflow-x:hidden}
+
+/* Top navigation - overlays all chapters */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:24px 6vw;color:#fff;mix-blend-mode:difference}
+.nav ._logo{font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:.3em;font-weight:500;line-height:1.5}
+.nav ._logo b{display:block;font-size:16px;font-weight:700;letter-spacing:.05em}
+.nav ._n{display:flex;gap:24px;font-size:12px;letter-spacing:.15em}
+.nav ._n a{color:#fff;text-decoration:none;opacity:.9}
+
+/* Chapter = full screen section */
+.ch{position:relative;width:100%;height:100vh;min-height:640px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.ch ._img{position:absolute;inset:0;z-index:1}
+.ch ._img img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.05)}
+.ch::after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,.1) 40%,rgba(0,0,0,.45) 100%);pointer-events:none}
+.ch ._txt{position:relative;z-index:5;color:#fff;text-align:center;padding:0 24px;max-width:900px;opacity:0;transform:translateY(40px);transition:opacity 1.2s cubic-bezier(.19,1,.22,1),transform 1.2s cubic-bezier(.19,1,.22,1)}
+.ch.is-active ._txt{opacity:1;transform:translateY(0)}
+
+.ch ._chnum{font-family:'Josefin Sans',sans-serif;font-size:12px;letter-spacing:.4em;color:var(--yellow);font-weight:500;margin-bottom:16px;display:block}
+.ch ._ttl{font-family:'Noto Serif JP',serif;font-size:clamp(3.2rem,6vw,7rem);font-weight:700;line-height:1.35;letter-spacing:.03em;margin-bottom:20px;text-shadow:0 4px 30px rgba(0,0,0,.4)}
+.ch ._sub{font-size:clamp(1.3rem,1.3vw,1.6rem);font-weight:500;line-height:2;letter-spacing:.08em;text-shadow:0 2px 12px rgba(0,0,0,.5);max-width:640px;margin:0 auto}
+
+/* Final CTA chapter */
+.cta{background:var(--green-d);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 24px;color:#fff;text-align:center}
+.cta ._inner{max-width:720px}
+.cta ._tag{font-family:'Josefin Sans',sans-serif;font-size:13px;letter-spacing:.35em;color:var(--yellow);font-weight:500;margin-bottom:24px}
+.cta ._ttl{font-family:'Noto Serif JP',serif;font-size:clamp(3.2rem,6vw,6.8rem);font-weight:700;line-height:1.35;margin-bottom:24px}
+.cta ._ttl ._em{color:var(--yellow)}
+.cta ._sub{font-size:clamp(1.4rem,1.4vw,1.7rem);line-height:2;margin-bottom:40px;color:rgba(255,255,255,.9)}
+.cta ._btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta ._btn{display:inline-flex;align-items:center;gap:10px;padding:20px 40px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.08em;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.cta ._btn._p{background:var(--yellow);color:var(--ink);box-shadow:0 12px 30px rgba(240,192,64,.3)}
+.cta ._btn._s{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.cta ._btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.3)}
+
+/* Progress indicator */
+.prog{position:fixed;right:32px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:10px}
+.prog ._dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);transition:all .3s;cursor:pointer;border:none;padding:0}
+.prog ._dot.is-active{background:var(--yellow);transform:scale(1.5)}
+
+@media (max-width:900px){
+  .nav ._n{display:none}
+  .prog{right:14px}
+  .ch{min-height:560px}
+  .ch ._ttl{font-size:2.6rem}
+  .cta ._ttl{font-size:2.6rem}
+  .cta ._btns{flex-direction:column}
+}
+
+footer{background:var(--ink);color:#ccc;padding:28px 24px;text-align:center;font-size:12px;line-height:1.8}
+footer a{color:var(--yellow);margin:0 10px;text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="_logo">AISIN TAKAOKA TOHOKU<b>採用 2027</b></div>
+  <div class="_n"><a href="#ch1">宮城</a><a href="#ch2">工場</a><a href="#ch3">人</a><a href="#ch4">仕事</a><a href="#ch5">応募</a></div>
+</nav>
+
+<section class="ch" id="ch1">
+  <div class="_img"><img src="images/09_miyagi_scenery.png" alt=""></div>
+  <div class="_txt">
+    <span class="_chnum">Chapter 01 — LAND</span>
+    <h2 class="_ttl">宮城から、<br>世界のクルマへ。</h2>
+    <p class="_sub">大衡村の工場で生まれる部品が、<br>日本中の、そして世界中の道を走る。</p>
+  </div>
+</section>
+
+<section class="ch" id="ch2">
+  <div class="_img"><img src="images/03_factory_exterior.png" alt=""></div>
+  <div class="_txt">
+    <span class="_chnum">Chapter 02 — PLACE</span>
+    <h2 class="_ttl">最新の設備で、<br>最前線の仕事を。</h2>
+    <p class="_sub">アイシングループ100%出資。<br>340名の仲間と、鋳造から加工まで一貫生産。</p>
+  </div>
+</section>
+
+<section class="ch" id="ch3">
+  <div class="_img"><img src="images/01_morning_assembly.png" alt=""></div>
+  <div class="_txt">
+    <span class="_chnum">Chapter 03 — PEOPLE</span>
+    <h2 class="_ttl">困ったら、となりに<br>仲間がいる。</h2>
+    <p class="_sub">年齢や役職に関係なく話しやすい職場。<br>風通しの良さは、働きやすさに直結する。</p>
+  </div>
+</section>
+
+<section class="ch" id="ch4">
+  <div class="_img"><img src="images/06_brake_disc.png" alt=""></div>
+  <div class="_txt">
+    <span class="_chnum">Chapter 04 — WORK</span>
+    <h2 class="_ttl">ブレーキディスクが、<br>誰かの命を支える。</h2>
+    <p class="_sub">クルマの止まる・曲がる・走るを支える部品を、<br>ひとつひとつ丁寧につくる仕事。</p>
+  </div>
+</section>
+
+<section class="cta" id="ch5">
+  <div class="_inner">
+    <p class="_tag">GRADUATE RECRUITING 2027</p>
+    <h2 class="_ttl">さあ、<br>君の<span class="_em">最初の一歩</span>を。</h2>
+    <p class="_sub">会社見学・オンライン説明会、いつでもお気軽に。<br>新卒採用エントリーは随時受付中です。</p>
+    <div class="_btns">
+      <a href="#entry" class="_btn _p">新卒エントリー →</a>
+      <a href="#visit" class="_btn _s">会社見学・説明会</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Pattern G — スクロールストーリー<br>
+  <a href="index.html">A: 3カラムパズル</a> | <a href="pattern_b.html">B: 大判ワンショット</a> | <a href="pattern_f.html">F: データビジュアル</a> | <a href="gallery.html">Gallery</a>
+</footer>
+
+<div class="prog" id="prog"></div>
+<script>
+// Progress dots
+const chs = document.querySelectorAll('.ch, .cta');
+const prog = document.getElementById('prog');
+chs.forEach((ch,i)=>{
+  const b = document.createElement('button');
+  b.className = '_dot';
+  b.onclick = ()=> ch.scrollIntoView({behavior:'smooth'});
+  prog.appendChild(b);
+});
+
+// Active chapter detection
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if (e.isIntersecting){
+      e.target.classList.add('is-active');
+      const idx = Array.from(chs).indexOf(e.target);
+      document.querySelectorAll('.prog ._dot').forEach((d,i)=> d.classList.toggle('is-active', i===idx));
+    }
+  });
+}, { threshold: 0.4 });
+chs.forEach(ch=> io.observe(ch));
+</script>
+
+</body>
+</html>
