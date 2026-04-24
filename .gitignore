@@ -1,0 +1,7 @@
+*.log
+*_log.txt
+debug_*.js
+inspect_state.js
+state.png
+generate_images.js
+retry_09.js
