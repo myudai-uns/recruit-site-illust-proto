@@ -19,7 +19,9 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
   box-shadow:0 20px 60px rgba(45,36,24,.2);
   page-break-after:always;
   display:grid;
+  position:relative;
 }
+._pnum{position:absolute;bottom:18px;right:30px;font-size:11px;color:#888;letter-spacing:.15em;font-family:'Noto Sans JP',sans-serif;z-index:2}
 
 /* Cover */
 .slide._cover{align-items:center;justify-content:center;background:#fff;position:relative}
@@ -303,6 +305,17 @@ document.addEventListener('input', e => {
     saveTimer = setTimeout(save, 400);
   }
 });
+
+// Page numbers
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  slides.forEach((s, i) => {
+    const num = document.createElement('div');
+    num.className = '_pnum';
+    num.textContent = (i+1) + ' / ' + slides.length;
+    s.appendChild(num);
+  });
+})();
 
 restore();
 </script>
