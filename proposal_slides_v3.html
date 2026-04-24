@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ファーストビュー案作成</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --green-d:#1a5c38;
@@ -22,7 +22,7 @@ body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:#d8d0c0}
   width:min(1600px,100%);
   aspect-ratio:16/9;
   margin:0 auto 40px;
-  background:var(--cream);
+  background:#fff;
   overflow:hidden;
   box-shadow:0 20px 60px rgba(45,36,24,.2);
   page-break-after:always;
@@ -30,16 +30,16 @@ body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:#d8d0c0}
 }
 
 /* Cover slide */
-.slide._cover{align-items:center;justify-content:center;background:var(--cream);position:relative}
-.slide._cover h1{font-family:'Noto Serif JP',serif;font-size:100px;font-weight:700;color:var(--green-d);text-align:center;letter-spacing:.04em;line-height:1.2}
+.slide._cover{align-items:center;justify-content:center;background:#fff;position:relative}
+.slide._cover h1{font-size:100px;font-weight:900;color:var(--green-d);text-align:center;letter-spacing:.04em;line-height:1.2}
 .slide._cover ._sub{position:absolute;bottom:56px;left:0;right:0;text-align:center;font-size:15px;color:var(--gray);letter-spacing:.3em;font-weight:400}
 
 /* Content slides: small image on left + text right */
 .slide._content{grid-template-columns:1fr 1fr;align-items:center}
-.slide._content ._img{padding:60px 40px 60px 80px;display:flex;align-items:center;justify-content:center}
-.slide._content ._img img{max-width:100%;max-height:78%;width:auto;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 16px 40px rgba(45,36,24,.2);display:block}
+.slide._content ._img{padding:40px 30px 40px 60px;display:flex;align-items:center;justify-content:center}
+.slide._content ._img img{max-width:100%;max-height:90%;width:auto;height:auto;object-fit:contain;display:block}
 .slide._content ._txt{padding:60px 80px 60px 40px;display:flex;flex-direction:column;justify-content:center;gap:32px}
-.slide._content ._txt h2{font-family:'Noto Serif JP',serif;font-size:52px;font-weight:700;line-height:1.35;color:var(--green-d);letter-spacing:.02em}
+.slide._content ._txt h2{font-size:50px;font-weight:900;line-height:1.35;color:var(--green-d);letter-spacing:.02em}
 .slide._content ._txt ._pts{display:flex;flex-direction:column;gap:20px}
 .slide._content ._txt ._pt{display:flex;gap:18px;align-items:flex-start;font-size:19px;line-height:1.75}
 .slide._content ._txt ._pt ._n{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--green-d);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;margin-top:2px}
