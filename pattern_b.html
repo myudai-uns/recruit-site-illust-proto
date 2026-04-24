@@ -19,13 +19,14 @@ body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:#000;over
 
 .hero{position:relative;width:100%;height:100vh;min-height:720px;overflow:hidden}
 .hero ._bg{position:absolute;inset:0;z-index:1}
-.hero ._bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);animation:zoomSlow 30s ease-in-out infinite alternate}
+.hero ._bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;transform:scale(1.05);animation:zoomSlow 30s ease-in-out infinite alternate}
 @keyframes zoomSlow{0%{transform:scale(1.02)}100%{transform:scale(1.12)}}
 .hero::after{content:'';position:absolute;inset:0;z-index:2;background:
-  linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.35) 70%, rgba(26,60,42,0.85) 100%);
+  linear-gradient(100deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.15) 65%, rgba(26,60,42,0.45) 100%),
+  linear-gradient(180deg, transparent 40%, rgba(26,60,42,0.7) 100%);
   pointer-events:none}
 
-.hero ._content{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:space-between;padding:48px 6vw}
+.hero ._content{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:space-between;padding:48px 6vw;align-items:flex-start}
 .hero ._top{display:flex;justify-content:space-between;align-items:flex-start;color:#fff}
 .hero ._top ._logo{font-family:'Josefin Sans',sans-serif;font-size:12px;letter-spacing:.3em;font-weight:500;opacity:.9;line-height:1.6}
 .hero ._top ._logo b{display:block;font-size:20px;font-weight:700;letter-spacing:.05em;margin-bottom:4px}
@@ -33,7 +34,7 @@ body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:#000;over
 .hero ._top ._nav a{color:#fff;text-decoration:none;opacity:.85;transition:opacity .2s}
 .hero ._top ._nav a:hover{opacity:1}
 
-.hero ._main{color:#fff;max-width:900px}
+.hero ._main{color:#fff;max-width:780px;padding-left:0}
 .hero ._main ._tag{font-family:'Josefin Sans',sans-serif;font-size:13px;letter-spacing:.35em;color:var(--yellow);font-weight:500;margin-bottom:26px;opacity:0;animation:fu 1s .3s forwards}
 .hero ._main ._catch{font-family:'Noto Serif JP',serif;font-size:clamp(3.6rem,8vw,10rem);font-weight:700;line-height:1.28;letter-spacing:.03em;margin-bottom:32px;opacity:0;animation:fu 1.2s .6s forwards;text-shadow:0 2px 30px rgba(0,0,0,.45)}
 .hero ._main ._catch ._em{color:var(--yellow);font-weight:900}
@@ -69,7 +70,7 @@ footer a{color:var(--yellow);margin:0 10px;text-decoration:none}
 <body>
 
 <section class="hero">
-  <div class="_bg"><img src="images/01_morning_assembly.png" alt=""></div>
+  <div class="_bg"><img src="images/10_team_walking.png" alt=""></div>
   <div class="_content">
     <div class="_top">
       <div class="_logo">AISIN TAKAOKA TOHOKU<b>アイシン高丘東北</b>RECRUITING 2027</div>
