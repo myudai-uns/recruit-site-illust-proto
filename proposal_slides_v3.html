@@ -85,7 +85,8 @@ body{font-family:'Noto Sans JP',sans-serif;color:#111;background:#d8d0c0}
   <div>📄 文字はクリックで編集可 ／ 項目の ＋/× で追加・削除 ／ 自動保存：<span class="_status" id="status">—</span></div>
   <div>印刷は <b>Ctrl+P</b> → 横向き ／ 余白なし ／ 背景ON</div>
   <div class="_actions">
-    <button onclick="exportText()">書き出し</button>
+    <button onclick="savePdf()" style="background:#1a5c38;color:#fff;border-color:#1a5c38;font-weight:700">📄 PDFで保存</button>
+    <button onclick="exportText()">テキスト書き出し</button>
     <button onclick="resetText()">リセット</button>
   </div>
 </div>
@@ -276,6 +277,14 @@ function resetText() {
     localStorage.removeItem(KEY);
     location.reload();
   }
+}
+
+function savePdf() {
+  // Chromeの「PDFに保存」はdocument.titleをファイル名に使う
+  const orig = document.title;
+  document.title = '260425_ファーストビュー案_Unsee';
+  window.print();
+  setTimeout(() => { document.title = orig; }, 2000);
 }
 
 function exportText() {
