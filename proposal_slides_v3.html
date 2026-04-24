@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ファーストビュー案作成</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-d:#1a5c38;
+  --green-l:#6cb130;
+  --yellow:#e8b844;
+  --cream:#f8f1e4;
+  --ink:#2d2418;
+  --gray:#7a6f5e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:#d8d0c0}
+
+.deck{padding:40px 20px}
+.slide{
+  width:min(1600px,100%);
+  aspect-ratio:16/9;
+  margin:0 auto 40px;
+  background:var(--cream);
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(45,36,24,.2);
+  page-break-after:always;
+  display:grid;
+}
+
+/* Cover slide */
+.slide._cover{align-items:center;justify-content:center;background:var(--cream);position:relative}
+.slide._cover h1{font-family:'Noto Serif JP',serif;font-size:100px;font-weight:700;color:var(--green-d);text-align:center;letter-spacing:.04em;line-height:1.2}
+.slide._cover ._sub{position:absolute;bottom:56px;left:0;right:0;text-align:center;font-size:15px;color:var(--gray);letter-spacing:.3em;font-weight:400}
+
+/* Content slides: small image on left + text right */
+.slide._content{grid-template-columns:1fr 1fr;align-items:center}
+.slide._content ._img{padding:60px 40px 60px 80px;display:flex;align-items:center;justify-content:center}
+.slide._content ._img img{max-width:100%;max-height:78%;width:auto;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 16px 40px rgba(45,36,24,.2);display:block}
+.slide._content ._txt{padding:60px 80px 60px 40px;display:flex;flex-direction:column;justify-content:center;gap:32px}
+.slide._content ._txt h2{font-family:'Noto Serif JP',serif;font-size:52px;font-weight:700;line-height:1.35;color:var(--green-d);letter-spacing:.02em}
+.slide._content ._txt ._pts{display:flex;flex-direction:column;gap:20px}
+.slide._content ._txt ._pt{display:flex;gap:18px;align-items:flex-start;font-size:19px;line-height:1.75}
+.slide._content ._txt ._pt ._n{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--green-d);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;margin-top:2px}
+
+.print-hint{text-align:center;color:#555;font-size:12px;padding:10px 20px;background:#fff;position:fixed;top:0;left:0;right:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.print-hint b{color:var(--green-d)}
+
+@media print{
+  .print-hint{display:none}
+  body{background:#fff;padding:0}
+  .deck{padding:0}
+  .slide{margin:0;box-shadow:none;width:100%;aspect-ratio:auto;height:100vh;page-break-after:always}
+  @page{size:landscape;margin:0}
+}
+</style>
+</head>
+<body>
+
+<div class="print-hint">📄 印刷時は <b>Ctrl+P</b> → 「横向き」「余白: なし」「背景のグラフィック: ON」で綺麗に出ます</div>
+
+<div class="deck">
+
+<!-- P1: Cover -->
+<section class="slide _cover">
+  <h1>ファーストビュー案<br>作成</h1>
+  <div class="_sub">AISIN TAKAOKA TOHOKU ／ RECRUIT 2027</div>
+</section>
+
+<!-- P2: 01A -->
+<section class="slide _content">
+  <div class="_img"><img src="firstview_mocks/01A.png" alt=""></div>
+  <div class="_txt">
+    <h2>縦に流れる<br>パズル構造の写真</h2>
+    <div class="_pts">
+      <div class="_pt"><div class="_n">1</div><div>12枚のビジュアルを3カラムで縦スクロール。動きで<b>会社の広さ</b>を伝える</div></div>
+      <div class="_pt"><div class="_n">2</div><div>顔出しなしの後ろ姿・手元・製品で構成、<b>主力のブレーキローター</b>も配置</div></div>
+      <div class="_pt"><div class="_n">3</div><div>情報量が多く、スクロール前に<b>世界観ごと一気に伝わる</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- P3: 01B -->
+<section class="slide _content">
+  <div class="_img"><img src="firstview_mocks/01B.png" alt=""></div>
+  <div class="_txt">
+    <h2>タイルを重ねた<br>コラージュの写真</h2>
+    <div class="_pts">
+      <div class="_pt"><div class="_n">1</div><div>大小のタイルを非対称に配置し、<b>雑誌のような編集感</b>が出る</div></div>
+      <div class="_pt"><div class="_n">2</div><div>動きを抑えながら多画像、<b>「読ませるFV」</b>として成立</div></div>
+      <div class="_pt"><div class="_n">3</div><div>中央のキャッチコピーが<b>浮き上がる構図</b>で目線が止まる</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- P4: 02A -->
+<section class="slide _content">
+  <div class="_img"><img src="firstview_mocks/02A.png" alt=""></div>
+  <div class="_txt">
+    <h2>俯瞰で仲間の輪を<br>写したシックな写真</h2>
+    <div class="_pts">
+      <div class="_pt"><div class="_n">1</div><div>朝礼の円を真上から。<b>顔なしで「仲間の輪」</b>が構図で語れる</div></div>
+      <div class="_pt"><div class="_n">2</div><div>深い陰影＋黄色アクセントで<b>硬派なドラマ感</b>が出る</div></div>
+      <div class="_pt"><div class="_n">3</div><div>「困ったら、となりに仲間がいる。」の情緒が<b>1枚で伝わる</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- P5: 02B -->
+<section class="slide _content">
+  <div class="_img"><img src="firstview_mocks/02B.png" alt=""></div>
+  <div class="_txt">
+    <h2>俯瞰で仲間の輪を<br>写した明るい写真</h2>
+    <div class="_pts">
+      <div class="_pt"><div class="_n">1</div><div>同じ俯瞰でも、軽めのトーンで<b>クリアで前向きな空気</b>に</div></div>
+      <div class="_pt"><div class="_n">2</div><div>上部ナビ＋CTA2つが整理され、<b>読みやすさ重視</b>のレイアウト</div></div>
+      <div class="_pt"><div class="_n">3</div><div>ビジネス寄りの<b>落ち着いた印象</b>で、女性層にも馴染む</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- P6: 03A -->
+<section class="slide _content">
+  <div class="_img"><img src="firstview_mocks/03A.png" alt=""></div>
+  <div class="_txt">
+    <h2>3人の後ろ姿を<br>重厚に写した写真</h2>
+    <div class="_pts">
+      <div class="_pt"><div class="_n">1</div><div>暗い工場で<b>背中と影が主役</b>、責任感と重みが伝わる</div></div>
+      <div class="_pt"><div class="_n">2</div><div>「仲間」だけ黄色に抜いて、<b>かっこよさをピンポイント</b>で強調</div></div>
+      <div class="_pt"><div class="_n">3</div><div>男子学生・硬派志向の新卒層へ<b>刺さる重厚感</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- P7: 03B -->
+<section class="slide _content">
+  <div class="_img"><img src="firstview_mocks/03B.png" alt=""></div>
+  <div class="_txt">
+    <h2>3人の後ろ姿が<br>光へ向かう明るい写真</h2>
+    <div class="_pts">
+      <div class="_pt"><div class="_n">1</div><div>通路奥のバックライトが<b>「前へ進む」象徴</b>になる</div></div>
+      <div class="_pt"><div class="_n">2</div><div>3人並びで<b>「ひとりじゃない」が視覚化</b>される</div></div>
+      <div class="_pt"><div class="_n">3</div><div>希望的なトーンで<b>幅広い層に馴染む</b>温度感</div></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+</body>
+</html>
