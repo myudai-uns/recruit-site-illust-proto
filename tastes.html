@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>写真テイスト比較 — Pattern A</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;background:#f4efe5;color:#2d2418;line-height:1.7;padding:44px 24px 70px}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:28px;font-weight:700;color:#1a5c38;margin-bottom:6px}
+.sub{font-size:13.5px;color:#7a6f5e;margin-bottom:36px}
+.note{background:#fff;border-radius:10px;padding:18px 22px;font-size:13px;color:#4a4335;border-left:3px solid #6cb130;margin-bottom:28px}
+.note b{color:#1a5c38}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(45,36,24,.06);transition:transform .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(45,36,24,.12)}
+.card ._img{aspect-ratio:1/1;background:#e8e0d0;position:relative;overflow:hidden}
+.card ._img img{width:100%;height:100%;object-fit:cover;display:block}
+.card ._img ._letter{position:absolute;top:14px;left:18px;font-family:'Josefin Sans',sans-serif;font-size:42px;font-weight:700;color:#fff;mix-blend-mode:difference;line-height:1}
+.card ._img ._pending{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#a8a095;font-size:13px;background:#f8f1e4}
+.card ._body{padding:20px 24px 24px}
+.card ._ttl{font-size:18px;font-weight:700;color:#1a5c38;margin-bottom:8px}
+.card ._desc{font-size:13px;color:#4a4335;line-height:1.8;margin-bottom:12px}
+.card ._tags{display:flex;gap:6px;flex-wrap:wrap}
+.card ._tag{font-size:11px;background:#e8efe0;color:#3a6d3a;padding:4px 10px;border-radius:20px}
+
+footer{margin-top:40px;padding-top:22px;border-top:1px solid #d9cfba;text-align:center;font-size:12px;color:#7a6f5e}
+footer a{color:#1a5c38;margin:0 10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>写真テイスト比較（Pattern A）</h1>
+<p class="sub">3カラム縦スクロール構造は維持。写真の見せ方だけ5方向に振った比較用サンプル（シーンは「02_OJT手元」で統一、1枚ずつ）</p>
+
+<div class="note">
+<b>使い方</b>: 気になったテイストを選んでください。選択したもので残り11枚（01, 03〜12）を一括生成して、Pattern AのFVを置き換えます。
+</div>
+
+<div class="grid">
+
+<div class="card">
+  <div class="_img">
+    <img src="tastes/I_monochrome_sepia.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="_pending" style="display:none">生成中...</div>
+    <div class="_letter">I</div>
+  </div>
+  <div class="_body">
+    <div class="_ttl">I. モノクロ／セピア調</div>
+    <div class="_desc">色を抜いて単色化。本格派・質実剛健・ドキュメンタリー感。他社採用サイトと差別化しやすい。</div>
+    <div class="_tags"><span class="_tag">シック</span><span class="_tag">差別化強</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="_img">
+    <img src="tastes/J_pure_photo.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="_pending" style="display:none">生成中...</div>
+    <div class="_letter">J</div>
+  </div>
+  <div class="_body">
+    <div class="_ttl">J. ピュア写真（100%写真）</div>
+    <div class="_desc">絵画タッチ完全排除のドキュメント写真。リアルさと説得力で勝負。トヨタ・東レ系。</div>
+    <div class="_tags"><span class="_tag">リアル</span><span class="_tag">説得力</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="_img">
+    <img src="tastes/K_film_grain.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="_pending" style="display:none">生成中...</div>
+    <div class="_letter">K</div>
+  </div>
+  <div class="_body">
+    <div class="_ttl">K. フィルムカメラ風</div>
+    <div class="_desc">粒子感・色褪せ・ビネットでノスタルジー。温かい・手作り感。Instax／フィルム雑誌系。</div>
+    <div class="_tags"><span class="_tag">温かい</span><span class="_tag">ノスタルジー</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="_img">
+    <img src="tastes/L_duotone_green.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="_pending" style="display:none">生成中...</div>
+    <div class="_letter">L</div>
+  </div>
+  <div class="_body">
+    <div class="_ttl">L. デュオトーン（緑×クリーム）</div>
+    <div class="_desc">会社カラー（深い緑＋クリーム）だけの2色化。ブランドカラー一貫性が一気に出る。</div>
+    <div class="_tags"><span class="_tag">ブランド強</span><span class="_tag">統一感</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="_img">
+    <img src="tastes/M_cutout_minimal.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="_pending" style="display:none">生成中...</div>
+    <div class="_letter">M</div>
+  </div>
+  <div class="_body">
+    <div class="_ttl">M. 切り絵／ミニマル合成</div>
+    <div class="_desc">被写体を切り抜きクリーム背景に配置。余白多め・Apple製品写真系。整理感・モダン。</div>
+    <div class="_tags"><span class="_tag">モダン</span><span class="_tag">余白多</span></div>
+  </div>
+</div>
+
+</div>
+
+<footer>
+<a href="index.html">← 現行Pattern A（70/30・顔なし）</a> | <a href="gallery.html">全12枚ギャラリー</a> | <a href="patterns.html">パターン比較トップ</a>
+</footer>
+</div>
+</body>
+</html>
